@@ -15,9 +15,7 @@ from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
 
-    # cfg_file = "1843_3d.cfg"
-    cfg_file = "1843_2d.cfg"
-    # cfg_file = "test_1843_3d.cfg"
+    cfg_file = "test_3d_1843_3.cfg"
 
     pkg_dir_path = get_package_share_directory('ti_mmwave_ros2_pkg')
     cfg_file_path = os.path.join(pkg_dir_path, 'cfg', cfg_file)
@@ -40,7 +38,7 @@ def generate_launch_description():
         name='mmWaveCommSrvNode',
         output='screen',
         parameters=[{
-            "command_port": "/dev/ttyACM0",
+            "command_port": "/dev/ttyACM1",
             "command_rate": 115200,
             "mmWaveCLI_name": "/mmWaveCLI",
         }],
@@ -66,7 +64,7 @@ def generate_launch_description():
                     plugin='ti_mmwave_ros2_pkg::mmWaveDataHdl',
                     name='mmWaveDataHdl',
                     parameters=[{
-                        "data_port": "/dev/ttyACM1",
+                        "data_port": "/dev/ttyACM2",
                         "data_rate": 921600,
                         "frame_id": "ti_mmwave_0",
                         "max_allowed_elevation_angle_deg": 90,
